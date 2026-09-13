@@ -79,23 +79,23 @@
 
     </main>
 
-    <!-- Footer with Advanced Visitor & Location Tracking -->
+    <!-- Footer with Dual Tracking -->
     <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs mt-10 border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-4">
             <p class="mb-2">📞 హోల్‌సేల్ ఆర్డర్స్ లేదా ఎంక్వైరీ కొరకు వాట్సాప్ చేయండి: <a href="https://wa.me/919999999999" class="text-amber-400 font-bold hover:underline">Click to WhatsApp</a></p>
             <p class="mb-3">© 2026 AutoParts QuickFinder | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b></p>
             
-            <!-- Dual Tracking Section (Visitor Count + Country/Location Flags) -->
+            <!-- Tracking Section -->
             <div class="pt-3 border-t border-slate-800 flex flex-col sm:flex-row justify-around items-center gap-4 text-slate-300">
-                <!-- Visitor Count Box -->
+                <!-- Original Live Visitor Counter -->
                 <div class="flex items-center gap-2 bg-slate-800 px-3 py-2 rounded-xl border border-slate-700">
-                    <span>👀 టోటల్ విజిటర్స్ కౌంట్:</span>
-                    <span id="visitorCount" class="bg-amber-400 text-slate-900 px-2 py-0.5 rounded-md font-bold text-xs">1</span>
+                    <span>👀 లైవ్ విజిటర్ కౌంట్:</span>
+                    <span id="liveVisitorCount" class="bg-emerald-500 text-slate-950 px-2.5 py-0.5 rounded-md font-bold text-xs">జోడించబడుతోంది...</span>
                 </div>
 
                 <!-- Country & Location Tracking Widget -->
                 <div class="flex items-center gap-2 bg-slate-800 px-3 py-2 rounded-xl border border-slate-700">
-                    <span>🌍 విజిటర్స్ ప్రాంతాలు (Countries):</span>
+                    <span>🌍 విజిటర్స్ ప్రాంతాలు:</span>
                     <a href="https://info.flagcounter.com/S7dt" target="_blank">
                         <img src="https://s11.flagcounter.com/mini/S7dt/bg_1E293B/txt_FFFFFF/border_334155/flags_1/" alt="Flag Counter" border="0">
                     </a>
@@ -104,16 +104,24 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Smart Dynamic Filtering & Real Visitor Counter -->
+    <!-- JavaScript for Smart Search & Real-Time Visitor API -->
     <script>
-        // రియల్ టైమ్ విజిటర్ కౌంటర్ లాజిక్
-        let visits = localStorage.getItem('siteVisits');
-        if (!visits) {
-            visits = 100; // బేస్ కౌంట్
+        // ఒరిజినల్ రియల్-టైమ్ విజిటర్ కౌంటర్ API (Free Counter API)
+        async function fetchVisitorCount() {
+            try {
+                // ప్రతిసారి పేజీ ఓపెన్ అయినప్పుడు లైవ్ కౌంట్ ఫెచ్ అవుతుంది
+                let response = await fetch('https://api.counterapi.dev/v1/srinivas-autoparts/visits/up');
+                let data = await response.json();
+                document.getElementById('liveVisitorCount').innerText = data.count;
+            } catch (error) {
+                // ఒకవేళ నెట్‌వర్క్ ఇష్యూ ఉంటే లోకల్ స్టోరేజ్ ఫాల్‌బ్యాక్
+                let localCount = localStorage.getItem('backupVisits') || 150;
+                localCount = parseInt(localCount) + 1;
+                localStorage.setItem('backupVisits', localCount);
+                document.getElementById('liveVisitorCount').innerText = localCount;
+            }
         }
-        visits = parseInt(visits) + 1;
-        localStorage.setItem('siteVisits', visits);
-        document.getElementById('visitorCount').innerText = visits;
+        fetchVisitorCount();
 
         const partsData = [
             { name: "Hero Splendor Clutch Plate Set", bike: "Hero Splendor / Passion / HF Deluxe", category: "Engine", price: "₹350", stock: "Available", code: "HSP-01" },
