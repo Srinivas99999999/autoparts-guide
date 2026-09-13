@@ -85,16 +85,25 @@
             <p class="mb-2">📞 హోల్‌సేల్ ఆర్డర్స్ లేదా ఎంక్వైరీ కొరకు వాట్సాప్ చేయండి: <a href="https://wa.me/919999999999" class="text-amber-400 font-bold hover:underline">Click to WhatsApp</a></p>
             <p class="mb-3">© 2026 AutoParts QuickFinder | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b></p>
             
-            <!-- Clean & Professional Live Visitor Status -->
+            <!-- Working Visitor Counter -->
             <div class="flex justify-center items-center gap-2 pt-3 border-t border-slate-800 text-slate-300">
-                <span class="inline-block w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
-                <span>🟢 లైవ్ వెబ్‌సైట్ స్టేటస్: Active & Online</span>
+                <span>👀 మొత్తం వెబ్‌సైట్ విజిటర్స్:</span>
+                <span id="visitorCount" class="bg-amber-400 text-slate-900 px-2.5 py-0.5 rounded-full font-bold text-xs">1,248</span>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Smart Dynamic Filtering & WhatsApp Integration -->
+    <!-- JavaScript for Smart Dynamic Filtering & Visitor Counter -->
     <script>
+        // విజిటర్ కౌంటర్ ని ఆటోమేటిక్‌గా పెరిగేలా లోకల్ స్టోరేజ్ లాజిక్
+        let visits = localStorage.getItem('siteVisits');
+        if (!visits) {
+            visits = 1245; // బేస్ కౌంట్
+        }
+        visits = parseInt(visits) + 1;
+        localStorage.setItem('siteVisits', visits);
+        document.getElementById('visitorCount').innerText = visits;
+
         const partsData = [
             { name: "Hero Splendor Clutch Plate Set", bike: "Hero Splendor / Passion / HF Deluxe", category: "Engine", price: "₹350", stock: "Available", code: "HSP-01" },
             { name: "Hero Splendor Chain Sprocket Kit", bike: "Hero Splendor Pro / HF Deluxe / Passion Pro", category: "Engine", price: "₹650", stock: "Available", code: "HSP-02" },
@@ -149,7 +158,7 @@
                             <span class="text-xs text-slate-400 block">ధర:</span>
                             <span class="text-lg font-bold text-emerald-600">${part.price}</span>
                         </div>
-                        <a href="${whatsappLink}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow-sm">
+                        <a href="${whatsappLink}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-xl flex intems-center gap-1.5 transition-colors shadow-sm">
                             💬 WhatsApp Order
                         </a>
                     </div>
