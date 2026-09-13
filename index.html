@@ -135,10 +135,10 @@
             
             <!-- Tracking Section -->
             <div class="pt-3 border-t border-slate-800 flex flex-col sm:flex-row justify-around items-center gap-4 text-slate-300">
-                <!-- Original Live Auto-increment Counter -->
+                <!-- Visitor Counter -->
                 <div class="flex items-center gap-2 bg-slate-800 px-3 py-2 rounded-xl border border-slate-700">
                     <span>👀 టోటల్ విజిటర్స్:</span>
-                    <span id="visitorCount" class="bg-amber-400 text-slate-950 px-2.5 py-0.5 rounded-md font-bold text-xs">...</span>
+                    <span id="visitorCount" class="bg-amber-400 text-slate-950 px-2.5 py-0.5 rounded-md font-bold text-xs">1250</span>
                 </div>
 
                 <!-- Country & Location Tracking Widget -->
@@ -152,14 +152,15 @@
         </div>
     </footer>
 
-    <!-- JavaScript for Smart Search, Cart & Order System -->
+    <!-- JavaScript for Smart Search, Cart & Visitor Counter -->
     <script>
-        // రియల్-టైమ్ విజిటర్ కౌంటర్ లాజిక్
+        // విజిటర్ కౌంటర్ లాజిక్
         let visits = localStorage.getItem('siteTotalVisits');
         if (!visits) {
             visits = 1250;
+        } else {
+            visits = parseInt(visits) + 1;
         }
-        visits = parseInt(visits) + 1;
         localStorage.setItem('siteTotalVisits', visits);
         document.getElementById('visitorCount').innerText = visits;
 
@@ -292,7 +293,7 @@
             }
 
             let message = `🛒 *కొత్త స్పేర్ పార్ట్స్ ఆర్డర్ (AutoParts QuickFinder)*\n\n`;
-            message += `👤 *పేరు:* ${name}\n`;
+            message += `👤 *పేరు:* పేరు ${name}\n`;
             message += `📞 *ఫోన్:* ${phone}\n`;
             message += `📍 *అడ్రస్:* ${address}\n\n`;
             message += `📦 *ఆర్డర్ చేసిన పార్ట్స్:*\n`;
@@ -314,7 +315,7 @@
             const category = categoryFilter.value;
 
             const filtered = partsData.filter(part => {
-                const searchableText = `${part.name} `${part.bike} ${part.code} ${part.category}`.toLowerCase();
+                const searchableText = `${part.name} ${part.bike} ${part.code} ${part.category}`.toLowerCase();
                 const matchesQuery = queryWords.every(word => searchableText.includes(word));
                 const matchesCategory = (category === 'all') || (part.category === category);
                 return matchesQuery && matchesCategory;
@@ -326,6 +327,7 @@
         searchInput.addEventListener('input', filterParts);
         categoryFilter.addEventListener('change', filterParts);
 
+        // ప్రారంభంలో అన్ని పార్ట్స్ క్లియర్‌గా డిస్‌ప్లే అయ్యేలా సెట్ చేయబడింది
         displayParts(partsData);
     </script>
 </body>
