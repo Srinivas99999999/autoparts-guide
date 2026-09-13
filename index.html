@@ -46,12 +46,12 @@
         
         <!-- Search & Filter Section -->
         <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-200 mb-6">
-            <h2 class="text-base font-semibold text-slate-700 mb-3">🔍 పార్ట్ లేదా బైక్ పేరు ద్వారా వెతకండి</h2>
+            <h2 class="text-base font-semibold text-slate-700 mb-3">🔍 పార్ట్ లేదా బైక్ పేరు ద్వారా వెతకండి (ఉదా: Hero, Splendor, Clutch)</h2>
             
             <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
                 <!-- Search Input -->
                 <div class="sm:col-span-2">
-                    <input type="text" id="searchInput" placeholder="ఉదా: Splendor Clutch Plate, Chain Sprocket..." 
+                    <input type="text" id="searchInput" placeholder="ఉదా: Hero, Activa, Chain, Brake..." 
                         class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm">
                 </div>
                 <!-- Category Filter -->
@@ -74,7 +74,7 @@
 
         <!-- No Results Message -->
         <div id="noResults" class="hidden text-center py-10">
-            <p class="text-slate-500 text-sm">క్షమించండి, మీరు వెతికిన పార్ట్ వివరాలు కనుగొనబడలేదు.</p>
+            <p class="text-slate-500 text-sm">క్షమించండి, మీరు వెతికిన పార్ట్ వివరాలు కనుగొనబడలేదు. వేరే పదం వెతికి చూడండి.</p>
         </div>
 
     </main>
@@ -85,28 +85,37 @@
             <p class="mb-2">📞 హోల్‌సేల్ ఆర్డర్స్ లేదా ఎంక్వైరీ కొరకు వాట్సాప్ చేయండి: <a href="https://wa.me/919999999999" class="text-amber-400 font-bold hover:underline">Click to WhatsApp</a></p>
             <p class="mb-3">© 2026 AutoParts QuickFinder | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b></p>
             
-            <!-- Visitor Counter Badge -->
-            <div class="flex justify-center items-center gap-2 text-slate-400 pt-2 border-t border-slate-800">
-                <span>👀 వెబ్‌సైట్ విజిటర్స్ కౌంట్:</span>
-                <img src="https://counter8.optistats.ovh/private/freecounterstat.php?c=u38b975x1kphz8w29e96feyxy86h897b" border="0" title="website visitor counter" alt="website visitor counter" style="height: 18px;">
+            <!-- Advanced Flag Counter & Visitor Tracker -->
+            <div class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-3 border-t border-slate-800">
+                <div class="flex items-center gap-1.5 text-slate-300">
+                    <span>🌍 విజిటర్స్ ట్రాకర్ & కౌంట్:</span>
+                </div>
+                <!-- Flag Counter Widget -->
+                <div>
+                    <a href="https://info.flagcounter.com/S7dt"><img src="https://s11.flagcounter.com/count/S7dt/bg_1E293B/txt_FFFFFF/border_334155/columns_4/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0" style="border-radius: 8px;"></a>
+                </div>
             </div>
         </div>
     </footer>
 
-    <!-- JavaScript for Dynamic Filtering & WhatsApp Integration -->
+    <!-- JavaScript for Smart Dynamic Filtering & WhatsApp Integration -->
     <script>
-        // స్పేర్ పార్ట్స్ డేటాబేస్
+        // సమగ్రమైన స్పేర్ పార్ట్స్ డేటాబేస్ (Hero, Honda, Bajaj, TVS అన్నింటికి సంబంధించినవి)
         const partsData = [
-            { name: "Hero Splendor Clutch Plate Set", bike: "Hero Splendor / Passion", category: "Engine", price: "₹350", stock: "Available", code: "HSP-01" },
-            { name: "Hero Splendor Chain Sprocket Kit", bike: "Hero Splendor Pro / HF Deluxe", category: "Engine", price: "₹650", stock: "Available", code: "HSP-02" },
-            { name: "Activa Front Brake Shoe", bike: "Honda Activa 3G/4G/5G/6G", category: "Brakes", price: "₹220", stock: "Available", code: "ACT-01" },
-            { name: "Honda Shine Air Filter", bike: "Honda CB Shine", category: "Engine", price: "₹150", stock: "Available", code: "SHN-01" },
-            { name: "Bajaj Pulsar 150 Front Fork Oil Seal", bike: "Bajaj Pulsar 150 / 180", category: "Body", price: "₹180", stock: "Fast Moving", code: "PLS-01" },
-            { name: "TVS Apache RTR Brake Pad", bike: "TVS Apache 160 / 180", category: "Brakes", price: "₹280", stock: "Available", code: "APA-01" },
-            { name: "Universal Horn (12V Double Tone)", bike: "All Bikes & Scooters", category: "Electrical", price: "₹320", stock: "Available", code: "ELC-01" },
-            { name: "Headlight LED Bulb (Hi/Low)", bike: "All DC Bikes", category: "Electrical", price: "₹250", stock: "Available", code: "ELC-02" },
-            { name: "Accelerator Cable (Throttle Cable)", bike: "Hero Splendor", category: "Brakes", price: "₹90", stock: "Available", code: "CBL-01" },
-            { name: "Engine Oil 20W40 (1 Liter)", bike: "All 4-Stroke Bikes", category: "Engine", price: "₹380", stock: "Available", code: "ENG-01" }
+            { name: "Hero Splendor Clutch Plate Set", bike: "Hero Splendor / Passion / HF Deluxe", category: "Engine", price: "₹350", stock: "Available", code: "HSP-01" },
+            { name: "Hero Splendor Chain Sprocket Kit", bike: "Hero Splendor Pro / HF Deluxe / Passion Pro", category: "Engine", price: "₹650", stock: "Available", code: "HSP-02" },
+            { name: "Hero HF Deluxe Air Filter", bike: "Hero HF Deluxe / Splendor iSmart", category: "Engine", price: "₹140", stock: "Available", code: "HSP-03" },
+            { name: "Activa Front Brake Shoe", bike: "Honda Activa 3G / 4G / 5G / 6G / Dio", category: "Brakes", price: "₹220", stock: "Available", code: "ACT-01" },
+            { name: "Honda Shine Air Filter", bike: "Honda CB Shine / SP 125", category: "Engine", price: "₹150", stock: "Available", code: "SHN-01" },
+            { name: "Honda Shine Front Brake Pad", bike: "Honda CB Shine Disc Model", category: "Brakes", price: "₹260", stock: "Available", code: "SHN-02" },
+            { name: "Bajaj Pulsar 150 Front Fork Oil Seal", bike: "Bajaj Pulsar 150 / 180 / 220", category: "Body", price: "₹180", stock: "Fast Moving", code: "PLS-01" },
+            { name: "Bajaj Pulsar Clutch Cable", bike: "Bajaj Pulsar 150 / NS160", category: "Brakes", price: "₹110", stock: "Available", code: "PLS-02" },
+            { name: "TVS Apache RTR Brake Pad", bike: "TVS Apache 160 / 180 / 200", category: "Brakes", price: "₹280", stock: "Available", code: "APA-01" },
+            { name: "TVS Jupiter Accelerator Cable", bike: "TVS Jupiter / Scooty Pep+", category: "Brakes", price: "₹100", stock: "Available", code: "JUP-01" },
+            { name: "Universal Horn (12V Double Tone)", bike: "All Bikes & Scooters (Hero, Honda, TVS, Bajaj)", category: "Electrical", price: "₹320", stock: "Available", code: "ELC-01" },
+            { name: "Headlight LED Bulb (Hi/Low)", bike: "All DC Bikes & Scooters", category: "Electrical", price: "₹250", stock: "Available", code: "ELC-02" },
+            { name: "Hero Splendor Accelerator Cable", bike: "Hero Splendor / Passion", category: "Brakes", price: "₹90", stock: "Available", code: "CBL-01" },
+            { name: "Engine Oil 20W40 (1 Liter)", bike: "All 4-Stroke Bikes (Hero, Honda, Bajaj, TVS)", category: "Engine", price: "₹380", stock: "Available", code: "ENG-01" }
         ];
 
         const container = document.getElementById('partsContainer');
@@ -156,12 +165,17 @@
         }
 
         function filterParts() {
-            const query = searchInput.value.toLowerCase();
+            // యూజర్ ఇచ్చిన సెర్చ్ కీవర్డ్‌ని విడగొట్టి మల్టిపుల్ వర్డ్స్ మ్యాచ్ అయ్యేలా స్మార్ట్ సెర్చ్ లాజిక్
+            const queryWords = searchInput.value.toLowerCase().trim().split(/\s+/);
             const category = categoryFilter.value;
 
             const filtered = partsData.filter(part => {
-                const matchesQuery = part.name.toLowerCase().includes(query) || part.bike.toLowerCase().includes(query) || part.code.toLowerCase().includes(query);
+                const searchableText = `${part.name} ${part.bike} ${part.code} ${part.category}`.toLowerCase();
+                
+                // అన్ని పదాలు సెర్చ్ టెక్స్ట్ లో ఉన్నాయా అని చెక్ చేస్తుంది
+                const matchesQuery = queryWords.every(word => searchableText.includes(word));
                 const matchesCategory = (category === 'all') || (part.category === category);
+                
                 return matchesQuery && matchesCategory;
             });
 
