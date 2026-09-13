@@ -1,307 +1,164 @@
-
 <!DOCTYPE html>
 <html lang="te">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pincode Hub & Utilities - SR Media Buzz</title>
-    <style>
-        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; background: linear-gradient(135deg, #74b9ff, #0984e3); color: #2d3436; margin: 0; padding: 15px; text-align: center; min-height: 100vh; }
-        .container { max-width: 750px; margin: 20px auto; background: #ffffff; padding: 30px; border-radius: 20px; box-shadow: 0 15px 35px rgba(0,0,0,0.2); }
-        
-        .brand-title { font-size: 13px; color: #0984e3; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; margin-bottom: 5px; }
-        h2 { margin: 0 0 5px 0; color: #00b894; font-size: 26px; }
-        .subtitle { color: #636e72; font-size: 13px; margin-bottom: 25px; }
-        
-        .top-bar { display: flex; justify-content: space-between; align-items: center; font-size: 12px; color: #2d3436; background: #dfe6e9; padding: 10px 18px; border-radius: 10px; margin-bottom: 20px; font-weight: bold; }
-        .theme-btn { background: #00b894; color: white; border: none; padding: 6px 14px; border-radius: 20px; cursor: pointer; font-size: 12px; font-weight: bold; }
-        
-        .section-box { background: #f1f2f6; padding: 20px; border-radius: 14px; margin-bottom: 20px; border: 1px solid #dfe6e9; text-align: left; }
-        .section-box h3 { font-size: 16px; margin-top: 0; color: #0984e3; }
-
-        input, select { width: 100%; padding: 12px 15px; font-size: 16px; margin-bottom: 12px; border: 1px solid #b2bec3; background: #ffffff; color: #2d3436; border-radius: 10px; box-sizing: border-box; outline: none; }
-        button.main-btn { padding: 14px 20px; font-size: 16px; background: #00b894; color: white; border: none; border-radius: 10px; cursor: pointer; font-weight: bold; width: 100%; box-shadow: 0 4px 12px rgba(0,184,148,0.4); }
-        button.main-btn:hover { background: #019875; }
-
-        .result-box { margin-top: 15px; font-size: 14px; text-align: left; background: #ffffff; padding: 18px; border-radius: 12px; border-left: 6px solid #00b894; max-height: 320px; overflow-y: auto; border: 1px solid #dfe6e9; }
-        
-        .grid-2 { display: grid; grid-template-columns: 1fr 1fr; gap: 15px; }
-        @media(max-width: 600px) { .grid-2 { grid-template-columns: 1fr; } }
-
-        .sub-card { background: #ffffff; padding: 15px; border-radius: 10px; border: 1px solid #dfe6e9; margin-bottom: 10px; }
-
-        .social-share { margin-top: 25px; padding: 20px; background: #f1f2f6; border-radius: 14px; border: 1px solid #dfe6e9; text-align: center; }
-        .social-share p { margin: 0 0 12px 0; font-size: 13px; font-weight: bold; color: #2d3436; }
-        .social-btns { display: flex; gap: 8px; justify-content: center; flex-wrap: wrap; }
-        
-        .s-btn { padding: 9px 14px; font-size: 12px; font-weight: bold; color: white !important; border: none; border-radius: 8px; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; gap: 6px; box-shadow: 0 2px 5px rgba(0,0,0,0.15); }
-        
-        .whatsapp-btn { background: #25D366; }
-        .youtube-btn { background: #FF0000; }
-        .facebook-btn { background: #1877F2; }
-        .instagram-btn { background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888); }
-        .twitter-btn { background: #14171A; }
-        .snapchat-btn { background: #FFFC00; color: #000000 !important; }
-        .threads-btn { background: #000000; }
-        .tumblr-btn { background: #36465d; }
-        .yahoo-btn { background: #6001d2; }
-        .atoplay-btn { background: #ff6600; }
-        .copy-btn { background: #e67e22; }
-
-        .footer { margin-top: 30px; font-size: 12px; color: #636e72; border-top: 1px solid #dfe6e9; padding-top: 20px; font-weight: bold; }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AutoParts QuickFinder - బైక్ స్పేర్ పార్ట్స్ ధరల గైడ్</title>
+    <!-- Tailwind CSS CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Telugu:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Noto Sans Telugu', sans-serif;
+        }
+    </style>
 </head>
-<body>
-    <div class="container">
-        <div class="top-bar">
-            <span id="liveClock">⏰ లోడ్ అవుతోంది...</span>
-            <button class="theme-btn" onclick="toggleTheme()">🌙 / ☀️ మోడ్</button>
-        </div>
+<body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
-        <div class="brand-title">🌟 Presented by SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</div>
-        <h2>Pincode Hub & Utilities</h2>
-        <div class="subtitle">పిన్‌కోడ్ లేదా ఊరు, మండలం, జిల్లా పేరు ద్వారా వెతికే డిజిటల్ హబ్</div>
-        
-        <!-- సెర్చ్ బాక్స్ -->
-        <div class="section-box">
-            <h3>🔍 పిన్‌కోడ్ లేదా ఊరు / మండలం పేరు ద్వారా వెతకండి</h3>
-            <input type="text" id="searchInput" placeholder="ఉదా: 507115 లేదా Mulakalapalli / Kothagudem">
-            <button class="main-btn" onclick="searchHub()">సమాచారం వెతకండి</button>
-            <div id="result" class="result-box" style="display:none;"></div>
-        </div>
+    <!-- Header -->
+    <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center">
+            <div>
+                <h1 class="text-xl font-bold text-amber-400 flex items-center gap-2">
+                    🏍️ AutoParts QuickFinder
+                </h1>
+                <p class="text-xs text-slate-300">బైక్ స్పేర్ పార్ట్స్ & హోల్‌సేల్ ప్రైస్ గైడ్</p>
+            </div>
+            <div class="mt-2 sm:mt-0 text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700 text-amber-300">
+                ⭐ Presented by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b>
+            </div>
+        </div>
+    </header>
 
-        <div class="grid-2">
-            <div class="section-box">
-                <h3>🌤️ వాతావరణ సమాచారం</h3>
-                <input type="text" id="weatherCity" placeholder="నగరం/మండలం పేరు రాయండి" style="font-size:14px; padding:8px;">
-                <button class="main-btn" onclick="getWeather()" style="padding:8px; font-size:14px; background:#0984e3;">వాతావరణం చూడండి</button>
-                <div id="weatherResult" style="font-size:13px; margin-top:10px; color:#2d3436;"></div>
-            </div>
+    <!-- Main Container -->
+    <main class="max-w-4xl mx-auto px-4 py-6 w-full flex-grow">
+        
+        <!-- Search & Filter Section -->
+        <div class="bg-white p-4 sm:p-6 rounded-2xl shadow-sm border border-slate-200 mb-6">
+            <h2 class="text-base font-semibold text-slate-700 mb-3">🔍 పార్ట్ లేదా బైక్ పేరు ద్వారా వెతకండి</h2>
+            
+            <div class="grid grid-cols-1 sm:grid-cols-3 gap-3">
+                <!-- Search Input -->
+                <div class="sm:col-span-2">
+                    <input type="text" id="searchInput" placeholder="ఉదా: Splendor Clutch Plate, Chain Sprocket..." 
+                        class="w-full px-4 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm">
+                </div>
+                <!-- Category Filter -->
+                <div>
+                    <select id="categoryFilter" class="w-full px-3 py-2.5 rounded-xl border border-slate-300 focus:ring-2 focus:ring-amber-500 focus:outline-none text-sm bg-white">
+                        <option value="all">అన్ని కేటగిరీలు (All)</option>
+                        <option value="Engine">ఇంజిన్ పార్ట్స్ (Engine)</option>
+                        <option value="Brakes">బ్రేక్స్ & కేబుల్స్ (Brakes)</option>
+                        <option value="Electrical">ఎలక్ట్రికల్ & లైట్స్ (Electrical)</option>
+                        <option value="Body">బాడీ & సస్పెన్షన్ (Body)</option>
+                    </select>
+                </div>
+            </div>
+        </div>
 
-            <div class="section-box">
-                <h3>📞 ముఖ్యమైన హెల్ప్‌లైన్ నంబర్లు</h3>
-                <div style="font-size:13px; line-height:1.6;">
-                    🚨 <b>అత్యవసర రక్షణ (Emergency):</b> 112<br>
-                    🚓 <b>పోలీస్ (Police):</b> 100 / 112<br>
-                    🚑 <b>అంబులెన్స్ (Ambulance):</b> 108<br>
-                    🔥 <b>ఫైర్ స్టేషన్ (Fire):</b> 101
-                </div>
-            </div>
-        </div>
+        <!-- Parts Cards / List Container -->
+        <div id="partsContainer" class="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <!-- JavaScript ద్వారా ఇక్కడ పార్ట్స్ లోడ్ అవుతాయి -->
+        </div>
 
-        <div class="grid-2">
-            <div class="section-box">
-                <h3>📐 ల్యాండ్ & యూనిట్ కన్వర్టర్</h3>
-                <input type="number" id="unitInput" placeholder="గజాలు / అడుగులు ఎంటర్ చేయండి" style="font-size:14px; padding:8px;">
-                <select id="unitType" style="font-size:14px; padding:8px;">
-                    <option value="sqyd_to_sqft">చదరపు గజాలు నుండి అడుగులకు</option>
-                    <option value="acres_to_guntas">ఎకరాలు నుండి గుంటలకు</option>
-                </select>
-                <button class="main-btn" onclick="convertUnits()" style="padding:8px; font-size:14px; background:#6c5ce7;">మార్చండి</button>
-                <div id="unitResult" style="font-size:13px; margin-top:10px; font-weight:bold; color:#6c5ce7;"></div>
-            </div>
+        <!-- No Results Message -->
+        <div id="noResults" class="hidden text-center py-10">
+            <p class="text-slate-500 text-sm">క్షమించండి, మీరు వెతికిన పార్ట్ వివరాలు కనుగొనబడలేదు.</p>
+        </div>
 
-            <div class="section-box">
-                <h3>📢 SR Media Buzz ఫీడ్</h3>
-                <div class="sub-card" style="font-size:13px;">
-                    ▶️ <b>లేటెస్ట్ అప్‌డేట్:</b> మా YouTube ఛానెల్‌లో నూతన షార్ట్స్ & లోకల్ అప్‌డేట్స్ కోసం సబ్స్క్రైబ్ చేయండి!
-                </div>
-            </div>
-        </div>
+    </main>
 
-        <div class="section-box">
-            <h3>🧮 ప్రొఫెషనల్ కాలిక్యులేటర్</h3>
-            <input type="number" id="calcNum1" placeholder="మొదటి సంఖ్య">
-            <select id="calcOperator">
-                <option value="+">కూడిక (+)</option>
-                <option value="-">తీసివేత (-)</option>
-                <option value="*">గుణకార (*)</option>
-                <option value="/">భాగహార (/)</option>
-            </select>
-            <input type="number" id="calcNum2" placeholder="రెండవ సంఖ్య">
-            <button class="main-btn" onclick="calculate()" style="background: #0984e3;">లెక్కించండి</button>
-            <div id="calcResult" class="result-box" style="display:none; border-left-color: #0984e3; text-align: center; font-weight: bold; font-size: 16px;"></div>
-        </div>
+    <!-- Footer -->
+    <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs mt-10 border-t border-slate-800">
+        <div class="max-w-4xl mx-auto px-4">
+            <p class="mb-2">📞 హోల్‌సేల్ ఆర్డర్స్ లేదా ఎంక్వైరీ కొరకు వాట్సాప్ చేయండి: <a href="https://wa.me/919999999999" class="text-amber-400 font-bold hover:underline">Click to WhatsApp</a></p>
+            <p>© 2026 AutoParts QuickFinder | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b></p>
+        </div>
+    </footer>
 
-        <div class="social-share">
-            <p>🌐 మా సోషల్ మీడియా ఛానెల్స్ & ప్లాట్‌ఫారమ్స్‌ను ఫాలో అవ్వండి:</p>
-            <div class="social-btns">
-                <a href="https://api.whatsapp.com/send?text=చూడండి! భారతదేశంలోని ఏ పిన్‌కోడ్ లేదా ఊరి వివరాలనైనా క్షణంలో తెలుసుకోండి: https://pincode-hub.netlify.app" target="_blank" class="s-btn whatsapp-btn">💬 WhatsApp</a>
-                <a href="https://www.youtube.com" target="_blank" class="s-btn youtube-btn">▶️ YouTube</a>
-                <a href="https://www.facebook.com" target="_blank" class="s-btn facebook-dbet" target="_blank" class="s-btn facebook-btn">👥 Facebook</a>
-                <a href="https://www.instagram.com" target="_blank" class="s-btn instagram-btn">📸 Instagram</a>
-                <a href="https://twitter.com" target="_blank" class="s-btn twitter-btn">✖️ X (Twitter)</a>
-                <a href="https://www.snapchat.com" target="_blank" class="s-btn snapchat-btn">👻 Snapchat</a>
-                <a href="https://www.threads.net" target="_blank" class="s-btn threads-btn">🧵 Threads</a>
-                <a href="https://www.tumblr.com" target="_blank" class="s-btn tumblr-btn">🇹 Tumblr</a>
-                <a href="https://www.yahoo.com" target="_blank" class="s-btn yahoo-btn">🟣 Yahoo</a>
-                <a href="https://atoplay.com" target="_blank" class="s-btn atoplay-btn">▶ AtoPlay</a>
-            </div>
-        </div>
+    <!-- JavaScript for Dynamic Filtering & WhatsApp Integration -->
+    <script>
+        // స్పేర్ పార్ట్స్ డేటాబేస్
+        const partsData = [
+            { name: "Hero Splendor Clutch Plate Set", bike: "Hero Splendor / Passion", category: "Engine", price: "₹350", stock: "Available", code: "HSP-01" },
+            { name: "Hero Splendor Chain Sprocket Kit", bike: "Hero Splendor Pro / HF Deluxe", category: "Engine", price: "₹650", stock: "Available", code: "HSP-02" },
+            { name: "Activa Front Brake Shoe", bike: "Honda Activa 3G/4G/5G/6G", category: "Brakes", price: "₹220", stock: "Available", code: "ACT-01" },
+            { name: "Honda Shine Air Filter", bike: "Honda CB Shine", category: "Engine", price: "₹150", stock: "Available", code: "SHN-01" },
+            { name: "Bajaj Pulsar 150 Front Fork Oil Seal", bike: "Bajaj Pulsar 150 / 180", category: "Body", price: "₹180", stock: "Fast Moving", code: "PLS-01" },
+            { name: "TVS Apache RTR Brake Pad", bike: "TVS Apache 160 / 180", category: "Brakes", price: "₹280", stock: "Available", code: "APA-01" },
+            { name: "Universal Horn (12V Double Tone)", bike: "All Bikes & Scooters", category: "Electrical", price: "₹320", stock: "Available", code: "ELC-01" },
+            { name: "Headlight LED Bulb (Hi/Low)", bike: "All DC Bikes", category: "Electrical", price: "₹250", stock: "Available", code: "ELC-02" },
+            { name: "Accelerator Cable (Throttle Cable)", bike: "Hero Splendor", category: "Brakes", price: "₹90", stock: "Available", code: "CBL-01" },
+            { name: "Engine Oil 20W40 (1 Liter)", bike: "All 4-Stroke Bikes", category: "Engine", price: "₹380", stock: "Available", code: "ENG-01" }
+        ];
 
-        <div class="footer">
-            © 2026 Pincode Hub | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b>
-        </div>
-    </div>
+        const container = document.getElementById('partsContainer');
+        const searchInput = document.getElementById('searchInput');
+        const categoryFilter = document.getElementById('categoryFilter');
+        const noResults = document.getElementById('noResults');
 
-    <script>
-        setInterval(() => {
-            let d = new Date();
-            document.getElementById('liveClock').innerHTML = "⏰ " + d.toLocaleTimeString();
-        }, 1000);
+        // మీ వాట్సాప్ నెంబర్ ఇక్కడ ఇవ్వండి (Country code తో పాటు, ఉదా: 919876543210)
+        const ownerWhatsAppNumber = "919999999999"; 
 
-        function toggleTheme() {
-            if(document.body.style.background === "rgb(18, 18, 18)") {
-                document.body.style.background = "linear-gradient(135deg, #74b9ff, #0984e3)";
-            } else {
-                document.body.style.background = "#121212";
-            }
-        }
+        function displayParts(items) {
+            container.innerHTML = '';
+            if (items.length === 0) {
+                noResults.classList.remove('hidden');
+                return;
+            } else {
+                noResults.classList.add('hidden');
+            }
 
-        // స్థానిక మరియు ఆల్ ఇండియా ప్రాంతాల డేటాబేస్ (ముఖ్యంగా ములకలపల్లి మరియు ఇతర ప్రాంతాలు తక్షణమే రావడానికి)
-        const localDatabase = {
-            "507115": [{ Name: "Mulakalapalli", Taluk: "Mulakalapalli", District: "Bhadradri Kothagudem", State: "Telangana", DeliveryStatus: "Delivery" }],
-            "mulakalapalli": [{ Pincode: "507115", Name: "Mulakalapalli", Taluk: "Mulakalapalli", District: "Bhadradri Kothagudem", State: "Telangana", DeliveryStatus: "Delivery" }],
-            "kothagudem": [{ Pincode: "507101", Name: "Kothagudem Ho", Taluk: "Kothagudem", District: "Bhadradri Kothagudem", State: "Telangana", DeliveryStatus: "Delivery" }],
-            "hyderabad": [{ Pincode: "500001", Name: "Secunderabad", Taluk: "Hyderabad", District: "Hyderabad", State: "Telangana", DeliveryStatus: "Delivery" }],
-            "khammam": [{ Pincode: "507001", Name: "Khammam Ho", Taluk: "Khammam", District: "Khammam", State: "Telangana", DeliveryStatus: "Delivery" }]
-        };
+            items.forEach(part => {
+                // వాట్సాప్ డైరెక్ట్ మెసేజ్ లింక్ తయారీ
+                const whatsappMessage = encodeURIComponent(`నమస్కారం, నాకు ఈ స్పేర్ పార్ట్ కావాలి: *${part.name}* (${part.bike}) - ధర: ${part.price}`);
+                const whatsappLink = `https://wa.me/${ownerWhatsAppNumber}?text=${whatsappMessage}`;
 
-        async function searchHub() {
-            let query = document.getElementById('searchInput').value.trim().toLowerCase();
-            let res = document.getElementById('result');
-            res.style.display = "block";
-            
-            if(!query) {
-                res.innerHTML = "⚠️ దయచేసి పిన్‌కోడ్ లేదా ఊరి పేరు ఎంటర్ చేయండి.";
-                return;
-            }
-            res.innerHTML = "🔍 సమాచారం వెతుకుతోంది...";
-            
-            // ముందు మన లోకల్ డేటాబేస్‌లో ఉందేమో చెక్ చేస్తాం
-            if(localDatabase[query]) {
-                displayResults(localDatabase[query], query);
-                return;
-            }
+                const card = document.createElement('div');
+                card.className = "bg-white p-4 rounded-2xl shadow-sm border border-slate-200 flex flex-col justify-between hover:shadow-md transition-all";
+                
+                card.innerHTML = `
+                    <div>
+                        <div class="flex justify-between items-start mb-2">
+                            <span class="text-xs font-semibold px-2.5 py-1 bg-amber-100 text-amber-800 rounded-full">${part.category}</span>
+                            <span class="text-xs text-slate-400 font-mono">Code: ${part.code}</span>
+                        </div>
+                        <h3 class="font-bold text-slate-800 text-base mb-1">${part.name}</h3>
+                        <p class="text-xs text-slate-500 mb-3">🏍️ బైక్ మోడల్: <b class="text-slate-700">${part.bike}</b></p>
+                    </div>
+                    <div class="pt-3 border-t border-slate-100 flex items-center justify-between mt-2">
+                        <div>
+                            <span class="text-xs text-slate-400 block">ధర:</span>
+                            <span class="text-lg font-bold text-emerald-600">${part.price}</span>
+                        </div>
+                        <a href="${whatsappLink}" target="_blank" class="bg-emerald-600 hover:bg-emerald-700 text-white text-xs font-semibold px-3.5 py-2 rounded-xl flex items-center gap-1.5 transition-colors shadow-sm">
+                            💬 WhatsApp Order
+                        </a>
+                    </div>
+                `;
+                container.appendChild(card);
+            });
+        }
 
-            try {
-                let apiUrl = "";
-                if(/^\d{6}$/.test(query)) {
-                    apiUrl = 'https://api.postalpincode.in/pincode/' + query;
-                } else {
-                    apiUrl = 'https://api.postalpincode.in/postoffice/' + encodeURIComponent(query);
-                }
+        // ఫిల్టరింగ్ లాజిక్
+        function filterParts() {
+            const query = searchInput.value.toLowerCase();
+            const category = categoryFilter.value;
 
-                let response = await fetch(apiUrl);
-                let data = await response.json();
-                
-                if(data && data[0] && data[0].Status === "Success" && data[0].PostOffice) {
-                    displayResults(data[0].PostOffice, query);
-                } else {
-                    res.innerHTML = `❌ "${query}" వివరాలు కనుగొనబడలేదు. (ఉదాహరణకు: 507115 లేదా Mulakalapalli అని ఇంగ్లీషులో టైప్ చేయండి).`;
-                }
-            } catch (error) {
-                res.innerHTML = "⚠️ సర్వర్ లోపం సంభవించింది. దయచేసి మళ్లీ ప్రయత్నించండి.";
-            }
-        }
+            const filtered = partsData.filter(part => {
+                const matchesQuery = part.name.toLowerCase().includes(query) || part.bike.toLowerCase().includes(query) || part.code.toLowerCase().includes(query);
+                const matchesCategory = (category === 'all') || (part.category === category);
+                return matchesQuery && matchesCategory;
+            });
 
-        function displayResults(offices, query) {
-            let res = document.getElementById('result');
-            let html = `<b>📍 మీరు వెతికిన ప్రాంతం పూర్తి వివరాలు:</b><br><hr>`;
-            let rawText = `Pincode Hub Details - ${query}\n`;
-            
-            offices.forEach((item) => {
-                let placeName = item.Name || "N/A";
-                let district = item.District || "N/A";
-                let state = item.State || "N/A";
-                let talukName = item.Taluk || item.Block || district;
-                let pincode = item.Pincode || query;
+            displayParts(filtered);
+        }
 
-                html += `📦 <b>పిన్‌కోడ్:</b> ${pincode}<br>`;
-                html += `🏘️ <b>గ్రామం / పోస్ట్ ఆఫీస్:</b> ${placeName}<br>`;
-                html += `📍 <b>మండలం / తాలూకా:</b> ${talukName}<br>`;
-                html += `🏙️ <b>జిల్లా:</b> ${district}<br>`;
-                html += `🌐 <b>రాష్ట్రం:</b> ${state}<br>`;
-                html += `🗺️ <a href="https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(placeName + ' ' + talukName + ' ' + district + ' ' + state)}" target="_blank" style="color: #0984e3; font-weight: bold;">గూగుల్ మ్యాప్స్‌లో చూడండి</a><br>`;
-                html += `<hr>`;
+        searchInput.addEventListener('input', filterParts);
+        categoryFilter.addEventListener('change', filterParts);
 
-                rawText += `Pin: ${pincode}, PO: ${placeName}, Mandal: ${talukName}, Dist: ${district}, State: ${state}\n`;
-            });
-
-            html += `<div style="text-align: center; margin-top: 10px;">
-                <button class="s-btn whatsapp-btn" onclick="shareWhatsApp()">💬 ఫలితాలు వాట్సాప్‌కి పంపు</button>
-                <button class="s-btn copy-btn" onclick="copyDetails()">📋 కాపీ చేయి</button>
-            </div>`;
-            
-            res.innerHTML = html;
-            window.lastSearchedText = rawText;
-        }
-
-        function getWeather() {
-            let city = document.getElementById('weatherCity').value.trim();
-            let wRes = document.getElementById('weatherResult');
-            if(!city) {
-                wRes.innerHTML = "⚠️ దయచేసి నగరం లేదా మండలం పేరు రాయండి.";
-                return;
-            }
-            wRes.innerHTML = `🌤️ ${city} ప్రాంతంలో ప్రస్తుతం వాతావరణం ఆహ్లాదకరంగా ఉంది.`;
-        }
-
-        function convertUnits() {
-            let val = parseFloat(document.getElementById('unitInput').value);
-            let type = document.getElementById('unitType').value;
-            let uRes = document.getElementById('unitResult');
-            if(isNaN(val)) {
-                uRes.innerHTML = "⚠️ దయచేసి సరైన విలువ ఎంటర్ చేయండి.";
-                return;
-            }
-            if(type === "sqyd_to_sqft") {
-                let ans = val * 9;
-                uRes.innerHTML = `🎯 సమాధానం: ${val} చదరపు గజాలు = ${ans} చదరపు అడుగులు`;
-            } else if(type === "acres_to_guntas") {
-                let ans = val * 40;
-                uRes.innerHTML = `🎯 సమాధానం: ${val} ఎకరాలు = ${ans} గుంటలు`;
-            }
-        }
-
-        function shareWhatsApp() {
-            if(window.lastSearchedText) {
-                window.open("https://api.whatsapp.com/send?text=" + encodeURIComponent(window.lastSearchedText), '_blank');
-            }
-        }
-
-        function copyDetails() {
-            if(window.lastSearchedText) {
-                navigator.clipboard.writeText(window.lastSearchedText);
-                alert("✅ వివరాలు కాపీ చేయబడ్డాయి!");
-            }
-        }
-
-        function calculate() {
-            let n1 = parseFloat(document.getElementById('calcNum1').value);
-            let n2 = parseFloat(document.getElementById('calcNum2').value);
-            let op = document.getElementById('calcOperator').value;
-            let cres = document.getElementById('calcResult');
-            cres.style.display = "block";
-
-            if(isNaN(n1) || isNaN(n2)) {
-                cres.innerHTML = "⚠️ దయచేసి రెండు ఖాళీలలో నంబర్లు ఎంటర్ చేయండి.";
-                return;
-            }
-
-            let ans = 0;
-            if(op === '+') ans = n1 + n2;
-            else if(op === '-') ans = n1 - n2;
-            else if(op === '*') ans = n1 * n2;
-            else if(op === '/') {
-                if(n2 === 0) {
-                    c8res.innerHTML = "⚠️ సున్నాతో భాగించడం సాధ్యం కాదు.";
-                    return;
-                }
-                ans = n1 / n2;
-            }
-            cres.innerHTML = `🎯 సమాధానం: ${n1} ${op} ${n2} = <b>${ans}</b>`;
-        }
-    </script>
+        // ఇనిషియల్ లోడ్
+        displayParts(partsData);
+    </script>
 </body>
 </html>
