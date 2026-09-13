@@ -85,22 +85,19 @@
             <p class="mb-2">📞 హోల్‌సేల్ ఆర్డర్స్ లేదా ఎంక్వైరీ కొరకు వాట్సాప్ చేయండి: <a href="https://wa.me/919999999999" class="text-amber-400 font-bold hover:underline">Click to WhatsApp</a></p>
             <p class="mb-3">© 2026 AutoParts QuickFinder | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b></p>
             
-            <!-- Advanced Flag Counter & Visitor Tracker -->
-            <div class="flex flex-col sm:flex-row justify-center items-center gap-3 pt-3 border-t border-slate-800">
-                <div class="flex items-center gap-1.5 text-slate-300">
-                    <span>🌍 విజిటర్స్ ట్రాకర్ & కౌంట్:</span>
-                </div>
-                <!-- Flag Counter Widget -->
-                <div>
-                    <a href="https://info.flagcounter.com/S7dt"><img src="https://s11.flagcounter.com/count/S7dt/bg_1E293B/txt_FFFFFF/border_334155/columns_4/maxflags_12/viewers_0/labels_1/pageviews_1/flags_0/" alt="Flag Counter" border="0" style="border-radius: 8px;"></a>
-                </div>
+            <!-- Reliable Visitor Tracker Badge -->
+            <div class="flex justify-center items-center gap-2 pt-3 border-t border-slate-800 text-slate-300">
+                <span>📊 లైవ్ విజిటర్స్ & ట్రాకింగ్:</span>
+                <a href="https://www.freecounterstat.com" title="website counter">
+                    <img src="https://counter4.optistats.ovh/private/freecounterstat.php?c=wpm9f8x7a79x7k8y2u9e8feyxy86h897b" border="0" alt="website counter" title="website counter" style="height: 20px; vertical-align: middle;">
+                </a>
             </div>
         </div>
     </footer>
 
     <!-- JavaScript for Smart Dynamic Filtering & WhatsApp Integration -->
     <script>
-        // సమగ్రమైన స్పేర్ పార్ట్స్ డేటాబేస్ (Hero, Honda, Bajaj, TVS అన్నింటికి సంబంధించినవి)
+        // సమగ్రమైన స్పేర్ పార్ట్స్ డేటాబేస్
         const partsData = [
             { name: "Hero Splendor Clutch Plate Set", bike: "Hero Splendor / Passion / HF Deluxe", category: "Engine", price: "₹350", stock: "Available", code: "HSP-01" },
             { name: "Hero Splendor Chain Sprocket Kit", bike: "Hero Splendor Pro / HF Deluxe / Passion Pro", category: "Engine", price: "₹650", stock: "Available", code: "HSP-02" },
@@ -165,17 +162,13 @@
         }
 
         function filterParts() {
-            // యూజర్ ఇచ్చిన సెర్చ్ కీవర్డ్‌ని విడగొట్టి మల్టిపుల్ వర్డ్స్ మ్యాచ్ అయ్యేలా స్మార్ట్ సెర్చ్ లాజిక్
             const queryWords = searchInput.value.toLowerCase().trim().split(/\s+/);
             const category = categoryFilter.value;
 
             const filtered = partsData.filter(part => {
                 const searchableText = `${part.name} ${part.bike} ${part.code} ${part.category}`.toLowerCase();
-                
-                // అన్ని పదాలు సెర్చ్ టెక్స్ట్ లో ఉన్నాయా అని చెక్ చేస్తుంది
                 const matchesQuery = queryWords.every(word => searchableText.includes(word));
                 const matchesCategory = (category === 'all') || (part.category === category);
-                
                 return matchesQuery && matchesCategory;
             });
 
