@@ -15,18 +15,29 @@
 </head>
 <body class="bg-slate-50 text-slate-800 min-h-screen flex flex-col justify-between">
 
-    <!-- Header -->
+    <!-- Header & Main Navigation Menu -->
     <header class="bg-slate-900 text-white shadow-md sticky top-0 z-50">
-        <div class="max-w-4xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center">
+        <div class="max-w-4xl mx-auto px-4 py-3 flex flex-col sm:flex-row justify-between items-center gap-3">
             <div>
                 <h1 class="text-xl font-bold text-amber-400 flex items-center gap-2">
                     🏍️ AutoParts QuickFinder
                 </h1>
                 <p class="text-xs text-slate-300">బైక్ స్పేర్ పార్ట్స్ & హోల్‌సేల్ ప్రైస్ గైడ్</p>
             </div>
-            <div class="mt-2 sm:mt-0 text-xs bg-slate-800 px-3 py-1.5 rounded-full border border-slate-700 text-amber-300">
-                ⭐ Presented by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b>
-            </div>
+            
+            <!-- Navigation Menu Links -->
+            <nav class="flex items-center gap-2 text-xs font-semibold">
+                <a href="#" class="px-3 py-1.5 bg-slate-800 text-amber-400 rounded-lg hover:bg-slate-700 transition-colors">🏠 హోమ్</a>
+                <a href="#partsContainer" class="px-3 py-1.5 bg-slate-800 text-slate-200 rounded-lg hover:bg-slate-700 transition-colors">⚙️ పార్ట్స్</a>
+                <a href="https://wa.me/919999999999" target="_blank" class="px-3 py-1.5 bg-emerald-600 text-white rounded-lg hover:bg-emerald-700 transition-colors flex items-center gap-1">
+                    💬 కాంటాక్ట్
+                </a>
+            </nav>
+        </div>
+        
+        <!-- Sub-bar Branding -->
+        <div class="bg-slate-800/80 border-t border-slate-800 py-1.5 px-4 text-center text-xs text-amber-300">
+            ⭐ Presented & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b>
         </div>
     </header>
 
