@@ -72,7 +72,13 @@
     <footer class="bg-slate-900 text-slate-400 py-6 text-center text-xs mt-10 border-t border-slate-800">
         <div class="max-w-4xl mx-auto px-4">
             <p class="mb-2">📞 హోల్‌సేల్ ఆర్డర్స్ లేదా ఎంక్వైరీ కొరకు వాట్సాప్ చేయండి: <a href="https://wa.me/919999999999" class="text-amber-400 font-bold hover:underline">Click to WhatsApp</a></p>
-            <p>© 2026 AutoParts QuickFinder | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b></p>
+            <p class="mb-3">© 2026 AutoParts QuickFinder | Designed & Managed by <b>SR Media Buzz (ఎస్ఆర్ మీడియా బజ్)</b></p>
+            
+            <!-- Visitor Counter Badge -->
+            <div class="flex justify-center items-center gap-2 text-slate-400 pt-2 border-t border-slate-800">
+                <span>👀 వెబ్‌సైట్ విజిటర్స్ కౌంట్:</span>
+                <img src="https://counter8.optistats.ovh/private/freecounterstat.php?c=u38b975x1kphz8w29e96feyxy86h897b" border="0" title="website visitor counter" alt="website visitor counter" style="height: 18px;">
+            </div>
         </div>
     </footer>
 
@@ -97,7 +103,6 @@
         const categoryFilter = document.getElementById('categoryFilter');
         const noResults = document.getElementById('noResults');
 
-        // మీ వాట్సాప్ నెంబర్ ఇక్కడ ఇవ్వండి (Country code తో పాటు, ఉదా: 919876543210)
         const ownerWhatsAppNumber = "919999999999"; 
 
         function displayParts(items) {
@@ -110,7 +115,6 @@
             }
 
             items.forEach(part => {
-                // వాట్సాప్ డైరెక్ట్ మెసేజ్ లింక్ తయారీ
                 const whatsappMessage = encodeURIComponent(`నమస్కారం, నాకు ఈ స్పేర్ పార్ట్ కావాలి: *${part.name}* (${part.bike}) - ధర: ${part.price}`);
                 const whatsappLink = `https://wa.me/${ownerWhatsAppNumber}?text=${whatsappMessage}`;
 
@@ -140,7 +144,6 @@
             });
         }
 
-        // ఫిల్టరింగ్ లాజిక్
         function filterParts() {
             const query = searchInput.value.toLowerCase();
             const category = categoryFilter.value;
@@ -157,7 +160,6 @@
         searchInput.addEventListener('input', filterParts);
         categoryFilter.addEventListener('change', filterParts);
 
-        // ఇనిషియల్ లోడ్
         displayParts(partsData);
     </script>
 </body>
